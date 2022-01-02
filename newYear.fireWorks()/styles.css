@@ -1,0 +1,24 @@
+body {
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+  }
+  
+.firework {
+    width: 10px;
+    height: 10px;
+    position: fixed;
+    
+}
+  
+.particle {
+  width: 4px;
+  height: 4px;
+  position: fixed;
+  background-color: blueviolet;
+}
+
+.container{
+  
+}
