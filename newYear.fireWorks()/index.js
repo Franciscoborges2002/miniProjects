@@ -1,7 +1,8 @@
 var dateDisplay = document.getElementById("dateDisplay");
 var haveAGoodDisplay = document.getElementById("haveAGood");
+var todayIsTheDay = document.getElementById("todayIsTheDay");
 const date = new Date();
-var started = 0;
+var started = 0, alreadyChecked= 0;
 const fireworks = [];
 const particles = [];
 const colors4Particles = ['#FF0000', '#FF5349', '#FFA500', '#FFAE42', '#FFFF00', '#9ACD32', '#00FF00', '#0D98BA', '#0000FF', '#8A2BE2', '#8F00FF', '#953553'];
@@ -118,6 +119,13 @@ class Firework {
   }
 }
 
+class Trail{
+    constructor(){
+        this.x = 0;
+        this.y = 0;
+    }
+}
+
 function fireworkStart(){
     if(started == 0){
         setInterval(() => {
@@ -134,21 +142,41 @@ function fireworkStart(){
     
 }
 
-function changeBackground(){
-    
+//Function to get the next year
+//It should return the data format yyyy/mm/dd as string
+function getNextYear(){
+    console.log((date.getFullYear() +1) + '/01/01');
+    //return (date.getFullYear() +1) + '/01/01';
+    return '2022/01/02'
 }
 
-//Interval to check if its time to fireworks
-setInterval(()=>{
-    if(dateNormalization() == '2022/01/02' && started == 0){
-        fireworkStart();
-        started++;
+//Check every day if its time to fireworks
+setInterval(() =>{
+    //to verify if the hour is in the begining
+    if(date.getMinutes() === 0 && alreadyChecked == 0){
+        console.log("Teste por minuto feito");
+        if(dateNormalization() == getNextYear() && started == 0){
+            fireworkStart();
+            dateDisplay.style.fontStyle = 'italic';
+            haveAGoodDisplay.style.fontsize = '0 px';
+            todayIsTheDay.style.fontStyle = 'italic';
+            todayIsTheDay.innerHTML = 'HAPPY NEW YEARR!!';
+            alreadyChecked++;
+            started++;
+        }
     }
-}, 1000);
+    //Put the variables again to 0
+    if(date.getMonth() === 11 && date.getDate() == 31){
+        started = 0;
+        alreadyChecked = 0;
+    }
+}, 1000 * 60*30);//repeat every 30 mins
+
+
+
 
 setInterval(() =>{
-    hours = date.getHours();
-    hours = 15;
+    hours = date.getHours();;
     if (hours < 10) {
         haveAGoodDisplay.innerHTML = 'Have a good morning!';
         document.body.style.background = 'radial-gradient(circle at center, #EBEEAE 0%, #94BBE9 100%)';
