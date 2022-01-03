@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>I think this calculator is broken</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="calculator">
+                <!--Display-->
+                <div class="display">
+                    <p id="total">0</p>
+                </div>
+                <!--Numbers and operations-->
+                <!--First row-->
+                <div class="row">
+                    <button class="clearDisplay" value="clearDisplay" onclick="getValue(this.value)">CD</button>
+                    <button class="clearCalc" value="clearCalc" onclick="getValue(this.value)">C</button>
+                    <button class="undo" value="undo" onclick="getValue(this.value)"><-</button>
+                    <button class="oper" value="/" onclick="getValue(this.value)">/</button>
+                </div>
+                <!--Second row-->
+                <div class="row">
+                    <button class="int" value="7" onclick="getValue(this.value)">7</button>
+                    <button class="int" value="8" onclick="getValue(this.value)">8</button>
+                    <button class="int" value="9" onclick="getValue(this.value)">9</button>
+                    <button class="oper" value="*" onclick="getValue(this.value)">*</button>
+                </div>
+                <!--Third row-->
+                <div class="row">
+                    <button class="int" value="4" onclick="getValue(this.value)">4</button>
+                    <button class="int" value="5" onclick="getValue(this.value)">5</button>
+                    <button class="int" value="6" onclick="getValue(this.value)">6</button>
+                    <button class="oper" value="-" onclick="getValue(this.value)">-</button>
+                </div>
+                <!--Fourth row-->
+                <div class="row">
+                    <button class="int" value="1" onclick="getValue(this.value)">1</button>
+                    <button class="int" value="2" onclick="getValue(this.value)">2</button>
+                    <button class="int" value="3" onclick="getValue(this.value)">3</button>
+                    <button class="oper" value="+" onclick="getValue(this.value)">+</button>
+                </div>
+                <!--Fourth row-->
+                <div class="row">
+                    <button class="switchOper" value="+/-" onclick="getValue(this.value)">+/-</button>
+                    <button class="int" value="0" onclick="getValue(this.value)">0</button>
+                    <button class="decimal" value="." onclick="getValue(this.value)">.</button>
+                    <button id="equal" value="=" onclick="getValue(this.value)">=</button>
+                </div>
+            </div>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>

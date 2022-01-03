@@ -1,0 +1,27 @@
+body{
+    padding: 0px;
+    margin: 0px;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*Change the browser margin for p*/
+#total{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.display{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.row{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
