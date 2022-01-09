@@ -4,35 +4,75 @@ var values = ["+"];
 var display = document.getElementById("total");
 var equal = document.getElementById("equal");
 
+//Function to add the value clicked to the array
 function getValue(clickedValue){
     str = "";
     values.push(clickedValue);
+
     for(let i = 0; i < values.length; i++){
         str += values[i];
     }
-    display.innerHTML = str;
-    console.log(str);
+    displayUpdate(str);
 }
 
+//Function to clear the display
 function clearDisplay(){
-    values = [];
-    display.innerHTML = "0";
+    values = ["+"];
+    displayUpdate(0);
 }
 
+//Function to update the display of the calculator
+function displayUpdate(valuesToUpdate){
+    display.innerHTML = valuesToUpdate;
+
+    console.log(values)
+    
+}
+
+function undoValue(){
+    str = "";
+
+    if(values.length == 1){//If values array only have 1 number
+        values = ["+"];
+    }else{
+        values.splice(values.length -1, values.length -1)
+    }
+
+    console.log(values);
+    for(let i = 0; i < values.length; i++){
+        str += values[i];
+    }
+    displayUpdate(str);
+
+}
+
+//Function to invert the signal
+function operatorInversion(){
+    if(values[0] == "+"){
+        values.shift();
+        values.unshift("-");
+    }else{
+        values.shift();
+        values.unshift("+");
+    }
+
+    console.log(values);
+}
+
+//Function to make the actual count
 //Need to make a little algorithm to go to the first operator
 equal.addEventListener("click", () =>{
     var res = 0;
     var firstNumber = "", secondNumber = "";
     var operator = "";
     //Separate the first Number and second number and the operator
-    for(let i = 0; i < values.length; i++){
+    //start in the second place at the array
+    for(let i = 1; i < values.length; i++){
         if(operator == ""){
             firstNumber += values[i].toString();
         }else{
             secondNumber += values[i].toString();
         }
-
-        console.log(values[i]);
 
         if(values[i].toString() === "+" && operator == ""){
             operator = "+";
@@ -43,10 +83,14 @@ equal.addEventListener("click", () =>{
         }else if(values[i].toString() == "/"  && operator == ""){
             operator = "/";
         }
+
+        console.log(values[i]);
+        
     }
 
     console.log("1stNumber: " + firstNumber);
     //Remove the operator from the firstNumber
+    firstNumber = values[0] + firstNumber;
     firstNumber = firstNumber.substring(0, firstNumber.length -1);
 
 
@@ -56,18 +100,18 @@ equal.addEventListener("click", () =>{
 
     switch(operator){
         case '+':
-            res = parseInt(firstNumber) + parseInt(secondNumber);
+            res = parseFloat(firstNumber) + parseFloat(secondNumber);
         break;
         case '-':
-            res = parseInt(firstNumber) - parseInt(secondNumber);
+            res = parseFloat(firstNumber) - parseFloat(secondNumber);
         break;
         case '*':
-            res = parseInt(firstNumber) * parseInt(secondNumber);
+            res = parseFloat(firstNumber) * parseFloat(secondNumber);
         break;
         case '/':
-            res = parseInt(firstNumber) / parseInt(secondNumber);
+            res = parseFloat(firstNumber) / parseFloat(secondNumber);
         break;
     }
 
-    display.innerHTML = res;
+    displayUpdate(res);
 });

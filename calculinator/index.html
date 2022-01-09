@@ -15,8 +15,8 @@
                 <!--First row-->
                 <div class="row">
                     <button class="clearDisplay" value="clearDisplay" onclick="clearDisplay()">CD</button>
-                    <button class="clearCalc" value="clearCalc" onclick="getValue(this.value)">C</button>
-                    <button class="undo" value="undo" onclick="getValue(this.value)"><-</button>
+                    <button class="clearCalc" value="clearCalc" onclick="clearDisplay()">C</button>
+                    <button class="undo" value="undo" onclick="undoValue()"><-</button>
                     <button class="oper" value="/" onclick="getValue(this.value)">/</button>
                 </div>
                 <!--Second row-->
@@ -42,7 +42,7 @@
                 </div>
                 <!--Fourth row-->
                 <div class="row">
-                    <button class="switchOper" value="+/-" onclick="getValue(this.value)">+/-</button>
+                    <button class="switchOper" value="+/-" onclick="operatorInversion()">+/-</button>
                     <button class="int" value="0" onclick="getValue(this.value)">0</button>
                     <button class="decimal" value="." onclick="getValue(this.value)">.</button>
                     <button id="equal" value="=">=</button>

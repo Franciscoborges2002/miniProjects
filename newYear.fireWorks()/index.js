@@ -147,7 +147,7 @@ function fireworkStart(){
 function getNextYear(){
     console.log((date.getFullYear() +1) + '/01/01');
     //return (date.getFullYear() +1) + '/01/01';
-    return '2022/01/02'
+    return '2022/01/05'
 }
 
 //Check every day if its time to fireworks
@@ -170,13 +170,13 @@ setInterval(() =>{
         started = 0;
         alreadyChecked = 0;
     }
-}, 1000 * 60*30);//repeat every 30 mins
+}, 1000 * 60 *30);//repeat every 30 mins; * 60*30
 
 
 
 
 setInterval(() =>{
-    hours = date.getHours();;
+    hours = date.getHours();
     if (hours < 10) {
         haveAGoodDisplay.innerHTML = 'Have a good morning!';
         document.body.style.background = 'radial-gradient(circle at center, #EBEEAE 0%, #94BBE9 100%)';
