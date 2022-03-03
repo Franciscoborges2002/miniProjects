@@ -7,11 +7,22 @@ var equal = document.getElementById("equal");
 //Function to add the value clicked to the array
 function getValue(clickedValue){
     str = "";
-    values.push(clickedValue);
+    valuesLen = values.length;
 
-    for(let i = 0; i < values.length; i++){
+    //To dont put 2 signals in a row
+    if(valuesLen > 1 && (clickedValue == '-' || clickedValue == '+' || clickedValue == '-'|| clickedValue == '+')){
+        if(values[valuesLen - 1] == '-' || values[valuesLen -1] == '+' || values[valuesLen -1] == '-'|| values[valuesLen -1] == '+'){
+            console.log("Don't put 2 signals in a row. Learn math :)");
+            return;
+        }
+    }
+
+    values.push(clickedValue);//put in the array
+
+    for(let i = 0; i < valuesLen; i++){
         str += values[i];
     }
+
     displayUpdate(str);
 }
 
