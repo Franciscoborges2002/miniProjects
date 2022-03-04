@@ -3,6 +3,7 @@
 var values = ["+"];
 var display = document.getElementById("total");
 var equal = document.getElementById("equal");
+var history = document.getElementById("history");
 
 //Function to add the value clicked to the array
 function getValue(clickedValue){
@@ -10,7 +11,7 @@ function getValue(clickedValue){
     valuesLen = values.length;
 
     //To dont put 2 signals in a row
-    if(valuesLen > 1 && (clickedValue == '-' || clickedValue == '+' || clickedValue == '-'|| clickedValue == '+')){
+    if(valuesLen >= 1 && (clickedValue == '-' || clickedValue == '+' || clickedValue == '-'|| clickedValue == '+')){
         if(values[valuesLen - 1] == '-' || values[valuesLen -1] == '+' || values[valuesLen -1] == '-'|| values[valuesLen -1] == '+'){
             console.log("Don't put 2 signals in a row. Learn math :)");
             return;
@@ -103,6 +104,7 @@ equal.addEventListener("click", () =>{
     //Remove the operator from the firstNumber
     firstNumber = values[0] + firstNumber;
     firstNumber = firstNumber.substring(0, firstNumber.length -1);
+    newHis = document.createElement('li');
 
 
     console.log("operator: " + operator);
@@ -112,17 +114,25 @@ equal.addEventListener("click", () =>{
     switch(operator){
         case '+':
             res = parseFloat(firstNumber) + parseFloat(secondNumber);
+            textnode = parseFloat(firstNumber) + "+" + parseFloat(secondNumber) + "=" + res;
         break;
         case '-':
             res = parseFloat(firstNumber) - parseFloat(secondNumber);
+            textnode = parseFloat(firstNumber) + "-" + parseFloat(secondNumber) + "=" + res;
         break;
         case '*':
             res = parseFloat(firstNumber) * parseFloat(secondNumber);
+            textnode = parseFloat(firstNumber) + "*" + parseFloat(secondNumber) + "=" + res;
         break;
         case '/':
             res = parseFloat(firstNumber) / parseFloat(secondNumber);
+            textnode = parseFloat(firstNumber) + "/" + parseFloat(secondNumber) + "=" + res;
         break;
     }
+
+    newHis.appendChild(textnode);
+
+    history.appendChild(newHis);
 
     displayUpdate(res);
 });
